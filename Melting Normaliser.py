@@ -8,6 +8,7 @@ Created on Wed Aug 25 20:31:03 2021
 from matplotlib import pyplot as plt
 import lmfit
 from numpy import exp, sqrt, cbrt
+import pyperclip
 
 #-----------------------------------------------------------------------------
 # Model Functions
@@ -107,9 +108,9 @@ while True:
     # ============================================================================
     # Uncomment below to show fit curve (make sure it is indented 8 spaces)    
     
-        # plt.scatter(x, y, marker=".")
-        # plt.plot(x, fitted.best_fit, linestyle='-', color='red')
-        # plt.show()
+        plt.scatter(x, y, marker=".")
+        plt.plot(x, fitted.best_fit, linestyle='-', color='red')
+        plt.show()
     
     # ============================================================================    
         
@@ -134,14 +135,19 @@ while True:
     # ============================================================================
     # Uncomment below to show normalised curve (make sure it is indented 4 spaces)
     
-    # plt.scatter(x, y, marker=".")
-    # plt.show()
+    plt.scatter(x, y, marker=".")
+    plt.show()
     
     # ============================================================================ 
     
     print()
     print("Normalised Values: ")
     print()    
+    result = ""
     for i in range(len(y)):
-        print(str(x[i]) + "\u0009" + str(y[i]))
+        resultline = str(x[i]) + "\u0009" + str(y[i]) + '\n'
+        result = result + resultline
+        
+    print(result)
+    pyperclip.copy(result)
     
